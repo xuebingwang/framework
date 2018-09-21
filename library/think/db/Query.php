@@ -2017,6 +2017,9 @@ class Query
                 }
             } else {
                 $table = $this->getTable();
+                if (false !== strpos($table, '__')) {
+                    $table = $this->parseSqlTable($table);
+                }
             }
 
             $this->options['alias'][$table] = $alias;
